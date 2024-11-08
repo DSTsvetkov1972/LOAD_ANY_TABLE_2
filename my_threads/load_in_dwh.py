@@ -8,6 +8,9 @@ import pandas as pd
 import re
 
 class LoadInDWHThread(QtCore.QThread):
+
+
+
     def __init__ (self, translit_headers, parent=None):
         QtCore.QThread.__init__(self, parent)
         self.translit_headers = translit_headers
@@ -32,10 +35,11 @@ class LoadInDWHThread(QtCore.QThread):
         #print(df_to_Insert)
         #globals.ui.statusbar.showMessage(dwh_table_name)
         tableColumnList = [f'`{rows_number_column_name}` Int32']
-        i = 0
+
         
 
         for column_name, column_format in zip(global_vars.horizontal_headers, global_vars.column_formats ):
+
             if 'Null' in column_format.currentText() or 'NaN' in column_format.currentText():
                 tableColumnList.append(f"`{column_name}` {column_format.currentText().replace('NaN', 'Null')} Null")
             else:
@@ -43,7 +47,7 @@ class LoadInDWHThread(QtCore.QThread):
                     tableColumnList.append(f"`{column_name}` String") 
                 else:    
                     tableColumnList.append(f"`{column_name}` {column_format.currentText()}")                
-            i +=1
+
 
         tableColumnStr = f',\n'.join(tableColumnList)
         global_vars.ui.footer_label.setStyleSheet('color: blue')        
@@ -64,10 +68,10 @@ class LoadInDWHThread(QtCore.QThread):
             # ORDER BY `Строка в исходнике`
             # '''.replace('`Строка в исходнике` String','`Строка в исходнике` Int32').replace('OrNull','')  
 
-            print(Fore.YELLOW, sql, Fore.WHITE)
+
 
             execute_sql_click(sql, operation_name = 'Создаём таблицу в базе данных')
-            print(Fore.CYAN,'Мы тут!' * 5)
+
             global_vars.ui.footer_label.setStyleSheet('color: blue')            
             global_vars.ui.footer_label.setText(f"Загружаем в таблицу {global_vars.dwh_table_name} данные из файла...")   
             insert_from_df(global_vars.dwh_table_name,
@@ -76,7 +80,6 @@ class LoadInDWHThread(QtCore.QThread):
 
             self.engine = 'MergeTree()' 
         except:
-            print(Fore.GREEN, 'Мы тут!!!' * 5)
 
             print('Внимание: таблица будет создана с движком Memory()!')
             sql = f'''

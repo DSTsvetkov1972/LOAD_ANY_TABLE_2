@@ -21,7 +21,7 @@ class LogInCheck(QtCore.QThread):
             return 
         else:
             params = get_params()
-            print(params)
+            #print(params)
             global_vars.ui.login_label.setStyleSheet("color: blue")
             global_vars.ui.login_label.setText(f"Проверяем подключение пользователя {params[3]} к базе {params[2]}")
             try:

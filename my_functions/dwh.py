@@ -33,7 +33,7 @@ def get_df_of_click(query: str):
             return connection.query_dataframe(query)
         
 def execute_sql_click(query, operation_name = ''):
-        print(Fore.CYAN, query, Fore.WHITE)
+        #print(Fore.CYAN, query, Fore.WHITE)
         try: 
             thread_start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             print(Fore.YELLOW + f'Запущен процесс: {operation_name} - {thread_start_time}' + Fore.WHITE)  
@@ -66,7 +66,7 @@ def insert_from_df(dwh_table_name, df, operation_name):
                             verify=False,
                             settings={'use_numpy': True})
             
-            print(Fore.GREEN, df, Fore.WHITE)
+            #print(Fore.GREEN, df, Fore.WHITE)
 
             connection.insert_dataframe(f'INSERT INTO {dwh_table_name} VALUES', df)
 
@@ -83,7 +83,7 @@ def get_params():
             return ['','','','','']
         with open(os.path.join('.config')) as config_file:
             params = config_file.read()
-            print(Fore.MAGENTA, params, Fore.WHITE)
+            #print(Fore.MAGENTA, params, Fore.WHITE)
         decoded_text = Fernet(b'lXgjsyWLG2R-nAWC1vBkz-FWFzeWFi-71rNMiO2ON40=').decrypt(params).decode('utf-8')
         return(decoded_text.split('\n'))
  

@@ -7,6 +7,7 @@ from pandas import DataFrame
 from PySide6 import QtWidgets
 from re import sub
 import time 
+import global_vars
 
 def parse(date_str):
         patterns = ['%d-%m-%Y %H:%M:%S',
@@ -53,7 +54,11 @@ def preprocessing(df, header_row, column_names, column_formats, rows_number_colu
     df_to_Insert.columns = map(str, df_to_Insert.columns)
     df_to_Insert         = df_to_Insert.map(str)
 
+    i=0
     for column_name, column_format in zip(column_names, column_formats):
+        i += 1
+        global_vars.ui.footer_label.setText(f"Подготавливаем к загрузке столбец {i} из {len(column_names)}: {column_name}")
+        time.sleep(0.1)
         if preprocessing_dict.get(column_format.currentText()) is not None:
             #print(Fore.YELLOW,preprocessing_dict.get(column_format.currentText())(df_to_Insert[column_name]))
             df_to_Insert[column_name] = preprocessing_dict.get(column_format.currentText())(df_to_Insert[column_name])

@@ -28,6 +28,11 @@ class LogInDialog(QtWidgets.QWidget):
         self.ui.lineEditDBNameField.setText(params[2])         
         self.ui.lineEditUserField.setText(params[3])         
         self.ui.lineEditPasswordField.setText(params[4])  
+    
+
+
+
+
     def accept(self):
         connection_settings_file_creator(self.ui.lineEditHostField.text(),
                self.ui.lineEditPortField.text(),
@@ -108,7 +113,8 @@ class MyWindow(QtWidgets.QWidget):
 #################################################################################### 
   
     load_in_dwh_thread = LoadInDWHThread(translit_headers=False)    # создаём потоки загрузки файла  
-    load_in_dwh_with_translit_headers_thread = LoadInDWHThread(translit_headers=True)    # создаём потоки загрузки файла    
+
+    load_in_dwh_with_translit_headers_thread = LoadInDWHThread(translit_headers=True)    # создаём потоки загрузки файла 
 
 ####################################################################################
 ####################################################################################   
@@ -169,7 +175,7 @@ class MyWindow(QtWidgets.QWidget):
 
     def load_in_dwh_thread_starter(self):
             self.log_in_check_thread.start()
-            print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
+            #print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
             if global_vars.log_in_status:
                 params = get_params()
                 if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
@@ -185,7 +191,7 @@ class MyWindow(QtWidgets.QWidget):
 
     def load_in_dwh_with_translit_headers_thread_starter(self):
             self.log_in_check_thread.start()
-            print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
+            #print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
             if global_vars.log_in_status:
                 params = get_params()
                 if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
