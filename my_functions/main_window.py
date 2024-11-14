@@ -110,7 +110,8 @@ def load_file_sheet_name():
                 global_vars.ui.footer_label.setText(f'Весь лист "{global_vars.ui.comboSheets.currentText()}" загружен!')
                  
         else:
-
+            global_vars.ui.footer_label.setStyleSheet('color: blue')                      
+            global_vars.ui.footer_label.setText(f'Загружаем лист целиком...')
             print(Fore.CYAN,'Загружаем лист целиком (B)',Fore.WHITE)
 
             global_vars.header_row = 0 
