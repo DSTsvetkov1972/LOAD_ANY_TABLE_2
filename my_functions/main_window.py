@@ -1,21 +1,6 @@
 import pandas as pd
-import ctypes
-import os
-from tqdm import tqdm
-import dateutil
-
-import datetime
-import tkinter
-from tkinter import filedialog
-#import pyperclip
-from tkinter import messagebox
-from clickhouse_driver import Client
-from datetime import datetime
 from params import *
-from cryptography.fernet import Fernet
 from colorama import init, Fore, Back, Style
-from transliterate import translit
-import re 
 from PySide6 import QtWidgets, QtCore
 import global_vars
 from my_widgets.my_combo_box_formats import MyComboBoxFormats
@@ -42,7 +27,7 @@ def checkHeaders(headers):
         else:
             i -= 1      
     headers = ['Строка в исходнике~0' if header == 'Строка в исходнике' else header for header in headers]
-    #headers = ['~№' if header == '№' else header for header in headers]    
+    headers = [header.strip() for header in headers]    
     return headers
 
 def translit(kir):
