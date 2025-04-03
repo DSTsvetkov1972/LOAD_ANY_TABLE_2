@@ -8,6 +8,7 @@ from my_threads.check_starter import CheckStarterThread
 #from functions import load_file_sheet_name
 
 def checkHeaders(headers):
+    headers = [header.strip().replace(chr(10), '↲').replace(chr(13), '↲').replace('\t','    ') for header in headers]  
     i = 0
     sep = "~"
     while i< len(headers):
@@ -27,7 +28,7 @@ def checkHeaders(headers):
         else:
             i -= 1      
     headers = ['Строка в исходнике~0' if header == 'Строка в исходнике' else header for header in headers]
-    headers = [header.strip() for header in headers]    
+  
     return headers
 
 def translit(kir):
