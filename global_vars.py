@@ -16,7 +16,7 @@ global log_in_status            # global_vars.log_in_status
 
 checks_dict = {}
 
-version = '2024-11-08' # 1
+version = '2025-06-27' # 1
 
 dev_info = """Приложение работает не так как ожидалось?
 Есть идеи что добавить или улучшить?
