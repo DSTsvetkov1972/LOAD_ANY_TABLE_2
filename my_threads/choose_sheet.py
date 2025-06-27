@@ -9,7 +9,10 @@ class ChooseSheetThread(QtCore.QThread):
         QtCore.QThread.__init__(self, parent)
     def run(self):
         self.header_row = 0
+        print(Fore.RED, 'Мы тут', Fore.RESET)
         global_vars.df = pd.read_excel(global_vars.file, header = None, dtype= 'string', engine = 'calamine', sheet_name = global_vars.sheet_name, nrows = 15)
+        print(global_vars.df)
+        
         if not global_vars.df.empty:
             global_vars.df.fillna('', inplace = True)
             global_vars.df.index += 1

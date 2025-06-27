@@ -9,6 +9,7 @@ from colorama import Fore
 
 
 
+
 from my_threads.load_in_dwh import LoadInDWHThread
 from my_threads.choose_file import OpenFileThread
 from my_threads.choose_sheet import ChooseSheetThread
@@ -136,7 +137,7 @@ class MyWindow(QtWidgets.QWidget):
     
     def on_finished_choose_file_thread(self): # Вызывается при завершении потока
         if global_vars.can_load_file:
-            if global_vars.file[-4:] in ['xlsx','.xls']:
+            if global_vars.file[-4:] in ['xlsx','.xls','xlsb']:
                 #sheet_names = excel_file_obj.sheet_names 
                 #self.comboSheets = QtWidgets.QComboBox()
                 #globals.ui.verticalLayoutRight.insertWidget(1, self.comboSheets)

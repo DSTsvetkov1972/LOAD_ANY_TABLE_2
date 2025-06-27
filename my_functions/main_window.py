@@ -1,5 +1,5 @@
 import pandas as pd
-from params import *
+#from params import *
 from colorama import init, Fore, Back, Style
 from PySide6 import QtWidgets, QtCore
 import global_vars
@@ -101,7 +101,7 @@ def load_file_sheet_name():
             print(Fore.CYAN,'Загружаем лист целиком (B)',Fore.WHITE)
 
             global_vars.header_row = 0 
-            if global_vars.file[-4:] in ['xlsx','xlsm','.xls','.ods']:
+            if global_vars.file[-4:] in ['xlsx','xlsm','xlsb','.xls','.ods']:
                 global_vars.df = pd.read_excel(global_vars.file, header = None, dtype= 'string', engine = 'calamine', sheet_name = global_vars.sheet_name)
             else:
                 global_vars.df = from_file_to_csv(global_vars.file)

@@ -11,7 +11,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from clickhouse_driver import Client
 from datetime import datetime
-from params import *
+#from params import *
 from cryptography.fernet import Fernet
 from colorama import init, Fore, Back, Style
 import re 

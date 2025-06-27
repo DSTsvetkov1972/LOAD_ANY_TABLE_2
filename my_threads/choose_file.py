@@ -27,6 +27,7 @@ class OpenFileThread(QtCore.QThread):
             #input('ssssssssssss')
         else:
             if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
+                print(Fore.YELLOW, 'Мы тут', Fore.RESET)
                 try:
                     with pd.ExcelFile(global_vars.file) as excel_file_obj:
                         global_vars.sheet_names = excel_file_obj.sheet_names
