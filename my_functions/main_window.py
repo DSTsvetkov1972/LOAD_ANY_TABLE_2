@@ -19,6 +19,9 @@ def checkHeaders(headers):
         else:
             i += 1
     headers = ['NoName' if header == '' else header for header in headers]
+
+    headers = ['Строка в исходнике~0' if header == 'Строка в исходнике' else header for header in headers]
+
     i = len(headers)-1
     while i != 0:
         header = headers[i]
@@ -26,10 +29,32 @@ def checkHeaders(headers):
             headers[i] = headers[i] + sep + str(headers.count(header)-1)
             continue
         else:
-            i -= 1      
-    headers = ['Строка в исходнике~0' if header == 'Строка в исходнике' else header for header in headers]
-  
+            i -= 1   
+
+
+
     return headers
+
+    headers_res = []
+    print(headers)
+
+    for header in headers:
+        if header == 'Строка в исходнике':
+            i = 0
+            while True:
+                header_attempt = f"Строка в исходнике~{i}"
+                if header_attempt in headers_res:
+                    i += 1
+                    continue
+                else:
+                    break
+            headers_res.append()
+        else:
+            headers_res.append(header)
+
+
+  
+    return headers_res
 
 def translit(kir):
     translation = kir.maketrans({'а':'a',

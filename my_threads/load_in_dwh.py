@@ -6,6 +6,7 @@ from my_functions.main_window import translit, load_file_sheet_name
 import global_vars
 import pandas as pd
 import re
+import pyperclip
 
 class LoadInDWHThread(QtCore.QThread):
 
@@ -60,6 +61,10 @@ class LoadInDWHThread(QtCore.QThread):
             ENGINE = MergeTree()
             ORDER BY `{rows_number_column_name}`
             '''.replace(f'`{rows_number_column_name}` String',f'`{rows_number_column_name}` Int32').replace('OrNull','')  
+
+            #print(sql)
+            #pyperclip.copy(sql)
+            #input('aaaaaaaaaaaaaaaaa')
 
             # sql = f'''
             # CREATE OR REPLACE TABLE {global_vars.dwh_table_name}
