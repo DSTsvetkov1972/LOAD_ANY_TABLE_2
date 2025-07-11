@@ -127,6 +127,7 @@ class LoadInDWHThread(QtCore.QThread):
             global_vars.ui.footer_label.setText(f"Внимание: файл загружен в таблицу с движком {self.engine}!")            
         else:  
             global_vars.ui.footer_label.setStyleSheet('color: green')             
-            global_vars.ui.footer_label.setText(f"Файл загружен в таблицу:")
+            global_vars.ui.footer_label.setText(f"Файл загружен в таблицу (название уже в буфере обмена):")
         global_vars.ui.footer_text.setVisible(True)
+        pyperclip.copy(global_vars.dwh_table_name)
         global_vars.ui.footer_text.setText(global_vars.dwh_table_name)
