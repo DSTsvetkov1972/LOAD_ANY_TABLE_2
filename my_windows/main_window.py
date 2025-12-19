@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QHeaderView, QLabel, QMainWindow, Q
     QTableView, QTableWidget, QTableWidgetItem, QWidget, QVBoxLayout,)
 import global_vars 
 from datetime import datetime
-
+import resources_rc
 
 
 class Ui_MainWindow(object):
@@ -34,7 +34,8 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(340, 724)         
         MainWindow.setWindowTitle(f"Загрузка Excel или CSV в DWH (ver.{global_vars.version})")
         #MainWindow.setWindowTitle(f"Загрузка Excel или CSV в DWH (ver. {datetime.now().strftime('%Y-%m-%d %H:%M')})")        
-       
+        icon = QIcon(":/icons/load_any_table.ico")
+        MainWindow.setWindowIcon(icon)
 
         self.centralwidget = QWidget(MainWindow)
 
