@@ -179,7 +179,7 @@ class MyWindow(QtWidgets.QWidget):
             #print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
             if global_vars.log_in_status:
                 params = get_params()
-                if global_vars.file.lower() in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
+                if global_vars.file[-4:].lower() in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
                     #sheet_name = globals.ui.comboSheets.currentText()
                     global_vars.dwh_table_name = f'{params[2]}.{params[3]}_LOADED_' + re.sub('\W','_',translit(global_vars.file.split('/')[-1] + '_' + global_vars.sheet_name))
                 else:
