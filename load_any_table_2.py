@@ -137,7 +137,7 @@ class MyWindow(QtWidgets.QWidget):
     
     def on_finished_choose_file_thread(self): # Вызывается при завершении потока
         if global_vars.can_load_file:
-            if global_vars.file[-4:] in ['xlsx','.xls','xlsb']:
+            if global_vars.file[-4:].lower() in ['xlsx','.xls','xlsb']:
                 #sheet_names = excel_file_obj.sheet_names 
                 #self.comboSheets = QtWidgets.QComboBox()
                 #globals.ui.verticalLayoutRight.insertWidget(1, self.comboSheets)
@@ -179,7 +179,7 @@ class MyWindow(QtWidgets.QWidget):
             #print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
             if global_vars.log_in_status:
                 params = get_params()
-                if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
+                if global_vars.file.lower() in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
                     #sheet_name = globals.ui.comboSheets.currentText()
                     global_vars.dwh_table_name = f'{params[2]}.{params[3]}_LOADED_' + re.sub('\W','_',translit(global_vars.file.split('/')[-1] + '_' + global_vars.sheet_name))
                 else:
@@ -195,7 +195,7 @@ class MyWindow(QtWidgets.QWidget):
             #print(Fore.MAGENTA, global_vars.log_in_status, Fore.WHITE)
             if global_vars.log_in_status:
                 params = get_params()
-                if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
+                if global_vars.file[-4:].lower() in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
                     #sheet_name = globals.ui.comboSheets.currentText()
                     global_vars.dwh_table_name = f'{params[2]}.{params[3]}_LOADED_' + re.sub('\W','_',translit(global_vars.file.split('/')[-1] + '_' + global_vars.sheet_name))
                 else:

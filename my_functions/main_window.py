@@ -106,9 +106,25 @@ def load_file_sheet_name():
                 global_vars.header_row = 0
                 global_vars.ui.footer_label.setStyleSheet('color: blue')                
 
-                if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
-                    global_vars.ui.footer_label.setText(f'Загружаем весь лист "{global_vars.ui.comboSheets.currentText()}"...')                    
-                    global_vars.df = pd.read_excel(global_vars.file, header = None, dtype= 'string', engine = 'calamine', sheet_name = global_vars.sheet_name)
+                if global_vars.file[-4:].lower() in ['xlsx', 'xlsm', 'xlsb', '.ods']:
+                    global_vars.ui.footer_label.setText(f'Загружаем весь лист "{global_vars.ui.comboSheets.currentText()}"...')
+                 
+                    global_vars.df = pd.read_excel(
+                        global_vars.file,
+                        header = None,
+                        dtype= 'string',
+                        sheet_name = global_vars.sheet_name
+                        )
+                    
+                elif global_vars.file[-4:].lower() in ['.xls']:                        
+
+                    global_vars.df = pd.read_excel(
+                        global_vars.file,
+                        header = None,
+                        dtype= 'string',
+                        engine = 'calamine',
+                        sheet_name = global_vars.sheet_name
+                        )
                 else:
                     global_vars.ui.footer_label.setText(f'Загружаем весь файл...')                    
                     global_vars.df = from_file_to_csv(global_vars.file)
@@ -126,8 +142,23 @@ def load_file_sheet_name():
             print(Fore.CYAN,'Загружаем лист целиком (B)',Fore.WHITE)
 
             global_vars.header_row = 0 
-            if global_vars.file[-4:] in ['xlsx','xlsm','xlsb','.xls','.ods']:
-                global_vars.df = pd.read_excel(global_vars.file, header = None, dtype= 'string', engine = 'calamine', sheet_name = global_vars.sheet_name)
+            if global_vars.file[-4:].lower() in ['xlsx','xlsm','xlsb','.ods']:
+
+                global_vars.df = pd.read_excel(
+                    global_vars.file,
+                    header = None,
+                    dtype= 'string',
+                    sheet_name = global_vars.sheet_name)
+                
+            elif global_vars.file[-4:].lower() in ['.xls']:
+                
+                global_vars.df = pd.read_excel(
+                    global_vars.file,
+                    header = None,
+                    dtype= 'string',
+                    engine = 'calamine',
+                    sheet_name = global_vars.sheet_name)                
+                
             else:
                 global_vars.df = from_file_to_csv(global_vars.file)
             global_vars.df.fillna('', inplace = True)
@@ -139,6 +170,7 @@ def load_file_sheet_name():
             global_vars.ui.footer_label.setText(f'Весь лист "{global_vars.ui.comboSheets.currentText()}" загружен!')
              
         MyComboBoxFormats.set_eanbled_all(True)
+
 
 def from_file_to_csv(f):
     with open(f, encoding='utf-8') as fn:

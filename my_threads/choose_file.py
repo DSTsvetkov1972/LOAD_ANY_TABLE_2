@@ -26,7 +26,7 @@ class OpenFileThread(QtCore.QThread):
             global_vars.can_load_file = False 
             #input('ssssssssssss')
         else:
-            if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
+            if global_vars.file[-4:].lower() in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
                 print(Fore.YELLOW, 'Мы тут', Fore.RESET)
                 try:
                     with pd.ExcelFile(global_vars.file) as excel_file_obj:
@@ -70,7 +70,7 @@ class OpenFileThread(QtCore.QThread):
     ##### не используется так как недоразобрался с видимостью комбобоксов (((    
     def on_finished_choose_file_thread(self): # Вызывается при завершении потока
         if global_vars.can_load_file:
-            if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
+            if global_vars.file[-4:].lower() in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
                 #sheet_names = excel_file_obj.sheet_names 
                 #self.comboSheets = QtWidgets.QComboBox()
                 #globals.ui.verticalLayoutRight.insertWidget(1, self.comboSheets)

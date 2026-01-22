@@ -102,15 +102,7 @@ class LoadInDWHThread(QtCore.QThread):
             insert_from_df(global_vars.dwh_table_name, df_to_Insert, operation_name = f'Загружаем данные в таблицу {global_vars.dwh_table_name}')
 
             self.engine = 'Memory()'           
-    """
-        def starter(self):
-            if global_vars.file[-4:] in ['.xls', 'xlsx', 'xlsm', 'xlsb', '.ods']:
-                #sheet_name = globals.ui.comboSheets.currentText()
-                global_vars.dwh_table_name = 'audit.cvetkov_d_LOADED_' + re.sub('\W','_',translit(global_vars.file.split('/')[-1] + '_' + global_vars.sheet_name))
-            else:
-                global_vars.dwh_table_name = 'audit.cvetkov_d_LOADED_' + re.sub('\W','_',translit(global_vars.file.split('/')[-1]))
-            self.start() # Запускаем поток  
-    """
+
 
     def on_started(self): # Вызывается при запуске потока
         global_vars.ui.verticalLayoutWidgetButtons.setEnabled(False)
