@@ -1,4 +1,4 @@
-from PySide6 import QtCore
+from PySide6 import QtCore, QtWidgets
 import pandas as pd
 import global_vars
 from my_functions.main_window import fill_in_table, load_file_sheet_name
@@ -10,6 +10,7 @@ class HeaderUpThread(QtCore.QThread):
         QtCore.QThread.__init__(self, parent)
     def run(self):
         load_file_sheet_name()
+
 
 
 
