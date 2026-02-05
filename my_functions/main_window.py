@@ -8,7 +8,7 @@ from my_threads.check_starter import CheckStarterThread
 #from functions import load_file_sheet_name
 
 def checkHeaders(headers):
-    headers = [header.strip().replace(chr(10), '↲').replace(chr(13), '↲').replace('\t','    ') for header in headers]  
+    headers = [header.strip().replace(chr(10), '↲').replace(chr(13), '↲').replace('\t','    ').replace('"','‘’') for header in headers]  
     i = 0
     sep = "~"
     while i< len(headers):
